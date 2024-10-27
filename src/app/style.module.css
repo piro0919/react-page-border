@@ -4,22 +4,21 @@
 }
 
 .wrapper::before {
+  background: red;
   content: "";
-  height: 100lvh;
-  inset: 0;
+  height: 12px;
   pointer-events: none;
   position: fixed;
   width: 100dvw;
+  inset: 0 0 auto 0;
 }
 
-.wrapper::before {
-  background: red;
-  /* border: solid 12px transparent;
-  border-radius: 24px;
-  mask: linear-gradient(#fff, #fff) padding-box, linear-gradient(#fff, #fff);
-  mask-composite: subtract; */
-  clip-path: rect(
-    0 0 calc(100dvh - 24px * 2) calc(100dvw - 24px * 2) round 24px
-  );
-  inset: 24px;
+.wrapper::after {
+  background: blue;
+  content: "";
+  height: 12px;
+  pointer-events: none;
+  position: fixed;
+  width: 100dvw;
+  inset: auto 0 0 0;
 }
