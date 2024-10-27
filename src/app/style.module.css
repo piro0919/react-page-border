@@ -24,3 +24,19 @@
 .wrapper::after {
   border: solid 12px red;
 }
+
+.wrapper2 {
+  text-align: right;
+  padding: 12px;
+  min-height: 100dvh;
+}
+
+.wrapper2::before {
+  border: 6px solid blue;
+  content: "";
+  height: 100dvh;
+  inset: 0;
+  pointer-events: none;
+  position: fixed;
+  width: 100dvw;
+}
