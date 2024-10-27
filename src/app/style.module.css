@@ -3,10 +3,9 @@
   min-height: 100dvh;
 }
 
-.wrapper::before,
-.wrapper::after {
+.wrapper::before {
   content: "";
-  height: 100dvh;
+  height: 100lvh;
   inset: 0;
   pointer-events: none;
   position: fixed;
@@ -15,19 +14,12 @@
 
 .wrapper::before {
   background: red;
-  border: solid 12px transparent;
+  /* border: solid 12px transparent;
   border-radius: 24px;
   mask: linear-gradient(#fff, #fff) padding-box, linear-gradient(#fff, #fff);
-  mask-composite: subtract;
-}
-
-.wrapper::after {
-  border: solid 12px red;
-}
-
-.hoge {
-  background: blue;
-  position: fixed;
-  bottom: 0;
-  z-index: 1;
+  mask-composite: subtract; */
+  clip-path: rect(
+    0 0 calc(100dvh - 24px * 2) calc(100dvw - 24px * 2) round 24px
+  );
+  inset: 24px;
 }

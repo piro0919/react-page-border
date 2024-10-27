@@ -218,7 +218,6 @@ export default function Page(): JSX.Element {
         <br />
         aaa
       </p>
-      <div className={styles.hoge}>bbb</div>
     </div>
   );
 }
