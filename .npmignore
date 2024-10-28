@@ -5,7 +5,8 @@ src
 .eslintrc.json
 .gitignore
 .npmignore
-.next-env.d.ts
-.next.config.ts
+next-env.d.ts
+next.config.ts
 package-lock.json
 tsconfig.json
+tsconfig.build.json

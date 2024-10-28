@@ -49,12 +49,12 @@
   "scripts": {
     "build": "next build",
     "compile": "npm run compile:common && npm run compile:types",
-    "compile:common": "esbuild ./src/app/components/PageBorder/index.tsx --outdir=./dist --allow-overwrite --sourcemap --minify",
+    "compile:common": "esbuild ./src/app/components/PageBorder/index.tsx --outdir=./dist --allow-overwrite --sourcemap --minify --jsx=automatic",
     "compile:types": "tsc --emitDeclarationOnly --declaration --project tsconfig.build.json",
     "dev": "next dev",
     "lint": "next lint",
     "start": "next start"
   },
   "types": "dist/index.d.ts",
-  "version": "0.0.1"
+  "version": "0.1.0"
 }

@@ -1,10 +1,11 @@
-import { ReactNode } from "react";
+import { CSSProperties, ReactNode } from "react";
 import styled from "@emotion/styled";
 
 type BorderWrapperProps = {
   borderColor: string;
   borderSize: string | number;
   roundSize: string | number;
+  zIndex?: number;
 };
 
 const BorderWrapper = styled.div<BorderWrapperProps>`
@@ -18,12 +19,14 @@ const BorderWrapper = styled.div<BorderWrapperProps>`
   &::after {
     background: var(--border-color);
     content: "";
+    display: block;
     height: var(--border-size);
     left: 0;
     pointer-events: none;
     position: fixed;
     right: 0;
     width: 100dvw;
+    z-index: ${({ zIndex }) => (typeof zIndex === "number" ? zIndex : "auto")};
   }
   &::before {
     top: 0;
@@ -32,17 +35,24 @@ const BorderWrapper = styled.div<BorderWrapperProps>`
     bottom: 0;
   }
 `;
-const BorderInner = styled.div`
+
+type BorderInnerProps = {
+  zIndex?: number;
+};
+
+const BorderInner = styled.div<BorderInnerProps>`
   &::before,
   &::after {
     content: "";
     background: var(--border-color);
     bottom: 0;
+    display: block;
     height: 100lvh;
     pointer-events: none;
     position: fixed;
     top: 0;
     width: var(--border-size);
+    z-index: ${({ zIndex }) => (typeof zIndex === "number" ? zIndex : "auto")};
   }
   &::before {
     left: 0;
@@ -71,32 +81,63 @@ const corner = `
     mask-composite: exclude;
     position: absolute;
     width: 200%;
+    z-index: inherit;
   }
 `;
-const CornerTopLeft = styled.div`
+
+type CornerTopLeftProps = {
+  zIndex?: number;
+};
+
+const CornerTopLeft = styled.div<CornerTopLeftProps>`
   ${corner}
   inset: 0 auto auto 0;
+  z-index: ${({ zIndex }) => (typeof zIndex === "number" ? zIndex : "auto")};
 `;
-const CornerTopRight = styled.div`
+
+type CornerTopRightProps = {
+  zIndex?: number;
+};
+
+const CornerTopRight = styled.div<CornerTopRightProps>`
   ${corner}
   inset: 0 0 auto auto;
+  z-index: ${({ zIndex }) => (typeof zIndex === "number" ? zIndex : "auto")};
 `;
-const CornerBottomRight = styled.div`
+
+type CornerBottomRightProps = {
+  zIndex?: number;
+};
+
+const CornerBottomRight = styled.div<CornerBottomRightProps>`
   ${corner}
   inset: auto 0 0 auto;
+  z-index: ${({ zIndex }) => (typeof zIndex === "number" ? zIndex : "auto")};
 `;
-const CornerBottomLeft = styled.div`
+
+type CornerBottomLeftProps = {
+  zIndex?: number;
+};
+
+const CornerBottomLeft = styled.div<CornerBottomLeftProps>`
   ${corner}
   inset: auto auto 0 0;
+  z-index: ${({ zIndex }) => (typeof zIndex === "number" ? zIndex : "auto")};
 `;
 
 export type PageBorderProps = Pick<
   BorderWrapperProps,
-  "borderColor" | "borderSize" | "roundSize"
-> & {
-  children: ReactNode;
-  className?: string;
-};
+  "borderColor" | "borderSize" | "roundSize" | "zIndex"
+> &
+  Pick<BorderInnerProps, "zIndex"> &
+  Pick<CornerTopLeftProps, "zIndex"> &
+  Pick<CornerTopRightProps, "zIndex"> &
+  Pick<CornerBottomRightProps, "zIndex"> &
+  Pick<CornerBottomLeftProps, "zIndex"> & {
+    children: ReactNode;
+    className?: string;
+    style?: CSSProperties;
+  };
 
 export default function PageBorder({
   borderColor,
@@ -104,6 +145,8 @@ export default function PageBorder({
   children,
   className,
   roundSize,
+  style,
+  zIndex,
 }: PageBorderProps): JSX.Element {
   return (
     <BorderWrapper
@@ -111,12 +154,14 @@ export default function PageBorder({
       borderSize={borderSize}
       className={className}
       roundSize={roundSize}
+      style={style}
+      zIndex={zIndex}
     >
-      <BorderInner>{children}</BorderInner>
-      <CornerTopLeft />
-      <CornerTopRight />
-      <CornerBottomRight />
-      <CornerBottomLeft />
+      <BorderInner zIndex={zIndex}>{children}</BorderInner>
+      <CornerTopLeft zIndex={zIndex} />
+      <CornerTopRight zIndex={zIndex} />
+      <CornerBottomRight zIndex={zIndex} />
+      <CornerBottomLeft zIndex={zIndex} />
     </BorderWrapper>
   );
 }
