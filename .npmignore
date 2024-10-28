@@ -1,0 +1,11 @@
+.next
+.vscode
+node_modules
+src
+.eslintrc.json
+.gitignore
+.npmignore
+.next-env.d.ts
+.next.config.ts
+package-lock.json
+tsconfig.json

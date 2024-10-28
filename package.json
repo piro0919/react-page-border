@@ -1,25 +1,60 @@
 {
-  "name": "window-size-test",
-  "version": "0.1.0",
-  "private": true,
-  "scripts": {
-    "dev": "next dev",
-    "build": "next build",
-    "start": "next start",
-    "lint": "next lint"
+  "author": "piro <piro.haniwa@gmail.com> (https://kk-web.link/)",
+  "browserslist": {
+    "development": [
+      "last 1 chrome version",
+      "last 1 firefox version",
+      "last 1 safari version"
+    ],
+    "production": [
+      ">0.2%",
+      "not dead",
+      "not op_mini all"
+    ]
+  },
+  "bugs": {
+    "url": "https://github.com/piro0919/react-page-border/issues"
   },
   "dependencies": {
-    "next": "15.0.1",
-    "react": "19.0.0-rc-69d4b800-20241021",
-    "react-dom": "19.0.0-rc-69d4b800-20241021",
-    "ress": "5.0.2"
+    "@emotion/react": "11.13.3",
+    "@emotion/styled": "11.13.0"
   },
   "devDependencies": {
     "@types/node": "^20",
     "@types/react": "^18",
     "@types/react-dom": "^18",
+    "esbuild": "0.24.0",
     "eslint": "^8",
     "eslint-config-next": "15.0.1",
+    "next": "15.0.1",
+    "react": "19.0.0-rc-69d4b800-20241021",
+    "react-dom": "19.0.0-rc-69d4b800-20241021",
+    "ress": "5.0.2",
     "typescript": "^5"
-  }
+  },
+  "homepage": "https://react-page-border.kk-web.link",
+  "keywords": [
+    "border",
+    "react"
+  ],
+  "license": "MIT",
+  "main": "dist/index.js",
+  "module": "dist/index.js",
+  "name": "react-page-border",
+  "private": false,
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/piro0919/react-page-border.git"
+  },
+  "scripts": {
+    "build": "next build",
+    "compile": "npm run compile:common && npm run compile:types",
+    "compile:common": "esbuild ./src/app/components/PageBorder/index.tsx --outdir=./dist --allow-overwrite --sourcemap --minify",
+    "compile:types": "tsc --emitDeclarationOnly --declaration --project tsconfig.build.json",
+    "dev": "next dev",
+    "lint": "next lint",
+    "start": "next start"
+  },
+  "types": "dist/index.d.ts",
+  "version": "0.0.1"
 }
