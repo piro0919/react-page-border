@@ -1,6 +1,5 @@
 import type { Metadata } from "next";
 import "./globals.css";
-import "ress";
 
 export const metadata: Metadata = {
   title: "react-page-border",

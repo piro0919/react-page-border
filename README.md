@@ -14,11 +14,14 @@ react-page-border is a react component that adds rounded borders to the entire p
 ## Usage
 
 ```tsx
-"use client";
 import PageBorder from "react-page-border";
 
 export default function App(): JSX.Element {
-  return <PageBorder>hoge</PageBorder>;
+  return (
+    <PageBorder borderColor="blue" borderSize={12} roundSize={12}>
+      hoge
+    </PageBorder>
+  );
 }
 ```
 

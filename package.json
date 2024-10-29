@@ -29,7 +29,6 @@
     "next": "15.0.1",
     "react": "19.0.0-rc-69d4b800-20241021",
     "react-dom": "19.0.0-rc-69d4b800-20241021",
-    "ress": "5.0.2",
     "typescript": "^5"
   },
   "homepage": "https://react-page-border.kk-web.link",
@@ -56,5 +55,5 @@
     "start": "next start"
   },
   "types": "dist/index.d.ts",
-  "version": "0.1.0"
+  "version": "0.1.1"
 }
