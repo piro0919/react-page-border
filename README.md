@@ -31,8 +31,10 @@ export default function App(): JSX.Element {
 | ----------- | :--------------: | :-----------: |
 | borderColor |      string      | **Required.** |
 | borderSize  | string or number | **Required.** |
+| borderStyle |  CSSProperties   |               |
 | children    |    ReactNode     | **Required.** |
 | className   |      string      |               |
+| marginSize  | string or number |               |
 | roundSize   | string or number | **Required.** |
 | style       |  CSSProperties   |               |
 | zIndex      |      number      |               |
