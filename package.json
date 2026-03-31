@@ -30,7 +30,7 @@
     "next": "15.0.1",
     "react": "19.0.0-rc-69d4b800-20241021",
     "react-dom": "19.0.0-rc-69d4b800-20241021",
-    "typescript": "^5"
+    "typescript": "^6.0.0"
   },
   "homepage": "https://react-page-border.kk-web.link",
   "keywords": [
