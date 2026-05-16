@@ -27,7 +27,7 @@
     "esbuild": "0.24.0",
     "eslint": "^8",
     "eslint-config-next": "15.3.8",
-    "next": "15.3.8",
+    "next": "15.5.18",
     "react": "19.1.4",
     "react-dom": "19.1.4",
     "typescript": "^5"
