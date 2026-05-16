@@ -1,24 +1,12 @@
 {
+  "extends": "./tsconfig.json",
   "compilerOptions": {
+    "noEmit": false,
+    "incremental": false,
     "declaration": true,
     "declarationMap": true,
-    "esModuleInterop": true,
-    "jsx": "preserve",
-    "lib": [
-      "es2017",
-      "dom"
-    ],
-    "module": "commonjs",
-    "moduleResolution": "node",
-    "newLine": "lf",
-    "outDir": "dist",
-    "skipLibCheck": true,
-    "sourceMap": true,
-    "strict": true,
-    "strictNullChecks": false,
-    "target": "es5"
+    "jsx": "react-jsx"
   },
-  "include": [
-    "src/app/components/PageBorder/index.tsx"
-  ]
+  "include": ["src/index.ts", "src/components/**/*.ts", "src/components/**/*.tsx"],
+  "exclude": ["src/app", "tests", "node_modules", "dist"]
 }

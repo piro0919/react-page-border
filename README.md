@@ -1,40 +1,51 @@
 # react-page-border
 
-react-page-border is a react component that adds rounded borders to the entire page.
+> React component that draws a fixed, rounded border framing the entire page.
 
-## Features
+[![npm](https://img.shields.io/npm/v/react-page-border.svg)](https://www.npmjs.com/package/react-page-border)
+[![license](https://img.shields.io/npm/l/react-page-border.svg)](./LICENSE)
 
-- SSR support
-- TypeScript support
+A decorative wrapper that paints four fixed bars and four rounded corners around the viewport. Dependency-free.
 
-## Installation
+🌐 **Demo:** <https://react-page-border.kkweb.io>
 
-`npm i --save react-page-border`
+## Install
+
+```bash
+npm install react-page-border
+```
+
+Requires React 18 or 19.
 
 ## Usage
 
 ```tsx
-import PageBorder from "react-page-border";
+import { PageBorder } from "react-page-border";
 
-export default function App(): JSX.Element {
+export function App() {
   return (
-    <PageBorder borderColor="blue" borderSize={12} roundSize={12}>
-      hoge
+    <PageBorder borderColor="#f59e0b" borderSize={12} roundSize={16}>
+      <YourPage />
     </PageBorder>
   );
 }
 ```
 
-## Props
+## API
 
-| Return      |       Type       |  Description  |
-| ----------- | :--------------: | :-----------: |
-| borderColor |      string      | **Required.** |
-| borderSize  | string or number | **Required.** |
-| borderStyle |  CSSProperties   |               |
-| children    |    ReactNode     | **Required.** |
-| className   |      string      |               |
-| marginSize  | string or number |               |
-| roundSize   | string or number | **Required.** |
-| style       |  CSSProperties   |               |
-| zIndex      |      number      |               |
+| Prop          | Type               | Required | Description                                     |
+| ------------- | ------------------ | -------- | ----------------------------------------------- |
+| `borderColor` | `string`           | yes      | Any CSS color.                                  |
+| `borderSize`  | `string \| number` | yes      | Bar thickness (number → px).                    |
+| `roundSize`   | `string \| number` | yes      | Corner radius (number → px).                    |
+| `marginSize`  | `string \| number` | no       | Wrapper margin. Defaults to `borderSize`.       |
+| `borderStyle` | `CSSProperties`    | no       | Extra style merged onto every bar/corner piece. |
+| `zIndex`      | `number`           | no       | Stacking context for the fixed pieces.          |
+| `className`   | `string`           | no       | Wrapper class.                                  |
+| `style`       | `CSSProperties`    | no       | Wrapper inline style.                           |
+
+Pieces are emitted with `data-part`: `bar-top`, `bar-right`, `bar-bottom`, `bar-left`, `corner-tl`, `corner-tr`, `corner-br`, `corner-bl`.
+
+## License
+
+MIT
