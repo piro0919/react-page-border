@@ -1,58 +1,68 @@
 "use client";
-import { useState } from "react";
-import PageBorder, { PageBorderProps } from "./components/PageBorder";
 
-export default function Page(): JSX.Element {
-  const [borderColor, setBorderColor] =
-    useState<PageBorderProps["borderColor"]>("blue");
-  const [borderSize, setBorderSize] =
-    useState<PageBorderProps["borderSize"]>(12);
-  const [roundSize, setRoundSize] = useState<PageBorderProps["roundSize"]>(12);
+import { useState } from "react";
+import { PageBorder } from "@/components/PageBorder";
+
+export default function Home() {
+  const [borderColor, setBorderColor] = useState("#f59e0b");
+  const [borderSize, setBorderSize] = useState(12);
+  const [roundSize, setRoundSize] = useState(16);
 
   return (
-    <PageBorder
-      borderColor={borderColor}
-      borderSize={
-        typeof borderSize === "string" ? parseInt(borderSize, 10) : borderSize
-      }
-      roundSize={
-        typeof roundSize === "string" ? parseInt(roundSize, 10) : roundSize
-      }
-    >
-      <div>
-        <div>
-          <label>borderColor: </label>
-          <select onChange={(e) => setBorderColor(e.currentTarget.value)}>
-            <option value="blue">blue</option>
-            <option value="red">red</option>
-            <option value="yellow">yellow</option>
-          </select>
-        </div>
-        <div>
-          <label>borderSize: </label>
-          <input
-            onChange={(e) => setBorderSize(e.currentTarget.value)}
-            type="number"
-            value={borderSize}
-          />
-        </div>
-        <div>
-          <label>roundSize: </label>
-          <input
-            onChange={(e) => setRoundSize(e.currentTarget.value)}
-            type="number"
-            value={roundSize}
-          />
-        </div>
+    <PageBorder borderColor={borderColor} borderSize={borderSize} roundSize={roundSize} zIndex={10}>
+      <div className="container">
+        <h1 className="title">react-page-border</h1>
+        <p className="subtitle">
+          A fixed, rounded border framing the entire page. Tweak the controls below — the border
+          updates live.
+        </p>
+
+        <section className="section">
+          <h2>Live controls</h2>
+          <p>
+            <code>borderColor</code>, <code>borderSize</code>, <code>roundSize</code>.
+          </p>
+          <div className="controls">
+            <label>
+              color
+              <input
+                type="color"
+                value={borderColor}
+                onChange={(e) => setBorderColor(e.target.value)}
+              />
+            </label>
+            <label>
+              borderSize ({borderSize}px)
+              <input
+                type="range"
+                min={2}
+                max={32}
+                value={borderSize}
+                onChange={(e) => setBorderSize(Number(e.target.value))}
+              />
+            </label>
+            <label>
+              roundSize ({roundSize}px)
+              <input
+                type="range"
+                min={0}
+                max={48}
+                value={roundSize}
+                onChange={(e) => setRoundSize(Number(e.target.value))}
+              />
+            </label>
+          </div>
+        </section>
+
+        <a
+          className="github-link"
+          href="https://github.com/piro0919/react-page-border"
+          rel="noopener noreferrer"
+          target="_blank"
+        >
+          GitHub →
+        </a>
       </div>
-      <hr />
-      <ul>
-        {Array(100)
-          .fill(undefined)
-          .map((_, index) => (
-            <li key={index}>hoge</li>
-          ))}
-      </ul>
     </PageBorder>
   );
 }

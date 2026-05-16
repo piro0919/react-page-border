@@ -1,19 +1,32 @@
-import type { Metadata } from "next";
+import type { Metadata, Viewport } from "next";
+import type { ReactNode } from "react";
 import "./globals.css";
 
+const SITE_URL = "https://react-page-border.kkweb.io";
+const TITLE = "react-page-border";
+const DESCRIPTION = "React component that draws a fixed, rounded border framing the entire page.";
+
 export const metadata: Metadata = {
-  title: "react-page-border",
-  description:
-    "react-page-border is a react component that adds rounded borders to the entire page.",
+  metadataBase: new URL(SITE_URL),
+  title: TITLE,
+  description: DESCRIPTION,
+  icons: { icon: "/icon.svg" },
+  alternates: { canonical: "/" },
+  openGraph: {
+    type: "website",
+    url: SITE_URL,
+    title: TITLE,
+    description: DESCRIPTION,
+    siteName: TITLE,
+  },
+  twitter: { card: "summary", title: TITLE, description: DESCRIPTION },
 };
 
-export default function RootLayout({
-  children,
-}: Readonly<{
-  children: React.ReactNode;
-}>) {
+export const viewport: Viewport = { themeColor: "#0f172a" };
+
+export default function RootLayout({ children }: { children: ReactNode }) {
   return (
-    <html lang="ja">
+    <html lang="en">
       <body>{children}</body>
     </html>
   );
