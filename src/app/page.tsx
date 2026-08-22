@@ -4,7 +4,7 @@ import { useState } from "react";
 import { PageBorder } from "@/components/PageBorder";
 
 export default function Home() {
-  const [borderColor, setBorderColor] = useState("#f59e0b");
+  const [borderColor, setBorderColor] = useState("#38bdf8");
   const [borderSize, setBorderSize] = useState(12);
   const [roundSize, setRoundSize] = useState(16);
 
