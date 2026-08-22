@@ -23,14 +23,18 @@ export default function Image() {
         color: "#ffffff",
       }}
     >
+      {/* このパッケージがやることを画像そのものに適用する。
+          右に図を置くより、枠が出ている状態を見せるほうが早い */}
       <div
         style={{
+          border: "10px solid #38bdf8",
+          borderRadius: 40,
           display: "flex",
-          width: 120,
-          height: 10,
-          borderRadius: 999,
-          marginBottom: 44,
-          background: "linear-gradient(90deg, #38bdf8 0%, #0284c7 100%)",
+          height: 574,
+          left: 28,
+          position: "absolute",
+          top: 28,
+          width: 1144,
         }}
       />
       <div
