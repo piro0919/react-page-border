@@ -1,3 +1,6 @@
+import { readFile } from "node:fs/promises";
+import { join } from "node:path";
+import { cwd } from "node:process";
 import { ImageResponse } from "next/og";
 
 export const alt = "react-page-border";
@@ -9,7 +12,11 @@ export const contentType = "image/png";
 const TITLE = "react-page-border";
 const DESCRIPTION = "React component that frames the whole page with a rounded border.";
 
-export default function Image() {
+export default async function Image() {
+  /* 見出しの書体はサイトと同じ Bricolage Grotesque。使う文字だけに絞ったものを
+     同梱している。文言を変えたら assets/README.md の手順で作り直す */
+  const font = await readFile(join(cwd(), "assets/Bricolage-700-subset.ttf"));
+
   return new ImageResponse(
     <div
       style={{
@@ -69,6 +76,9 @@ export default function Image() {
         kkweb.io
       </div>
     </div>,
-    size,
+    {
+      ...size,
+      fonts: [{ data: font, name: "Bricolage Grotesque", style: "normal", weight: 700 }],
+    },
   );
 }
