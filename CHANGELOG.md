@@ -1,6 +1,6 @@
 # Changelog
 
-## Unreleased
+## 1.0.2 - 2026-10-01
 
 - Fix: the top and bottom bars no longer use `100dvw`, which counts a classic scrollbar and
   pushed them past the right bar and under the scrollbar. They now span between the side bars
