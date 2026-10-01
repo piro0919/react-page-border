@@ -44,6 +44,18 @@ describe("PageBorder", () => {
     expect(root.style.margin).toBe("32px");
   });
 
+  it("sizes the bars from their insets, not from viewport units", () => {
+    const { container } = render(<PageBorder borderColor="red" borderSize={4} roundSize={8} />);
+    const top = container.querySelector<HTMLElement>("[data-part='bar-top']")!;
+    const left = container.querySelector<HTMLElement>("[data-part='bar-left']")!;
+    expect(top.style.left).toBe("0px");
+    expect(top.style.right).toBe("0px");
+    expect(top.style.width).toBe("");
+    expect(left.style.top).toBe("0px");
+    expect(left.style.bottom).toBe("0px");
+    expect(left.style.height).toBe("");
+  });
+
   it("applies zIndex to fixed pieces", () => {
     const { container } = render(
       <PageBorder borderColor="red" borderSize={4} roundSize={8} zIndex={500} />,

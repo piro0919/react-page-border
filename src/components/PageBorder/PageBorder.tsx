@@ -32,7 +32,6 @@ const CORNER_BASE: CSSProperties = {
 };
 
 const CORNER_MASK: CSSProperties = {
-  content: '""',
   display: "block",
   position: "absolute",
   inset: "inherit",
@@ -74,11 +73,12 @@ export function PageBorder({
   const horizontalBar: CSSProperties = {
     ...FIXED_BASE,
     background: "var(--rpb-border-color)",
+    // left/right 0 on a fixed box spans the viewport minus any classic
+    // scrollbar; a 100dvw width would include the scrollbar and overrun it.
     left: 0,
     right: 0,
     marginInline: "var(--rpb-border-size)",
     height: "var(--rpb-border-size)",
-    width: "calc(100dvw - var(--rpb-border-size) * 2)",
     zIndex: typeof zIndex === "number" ? zIndex : undefined,
     ...borderStyle,
   };
@@ -89,7 +89,6 @@ export function PageBorder({
     top: 0,
     bottom: 0,
     width: "var(--rpb-border-size)",
-    height: "100dvh",
     zIndex: typeof zIndex === "number" ? zIndex : undefined,
     ...borderStyle,
   };
