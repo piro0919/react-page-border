@@ -15,7 +15,7 @@ A decorative wrapper that paints four fixed bars and four rounded corners around
 npm install react-page-border
 ```
 
-Requires React 18 or 19.
+Requires React 18 or 19. The component uses no hooks, so it also works as a React Server Component.
 
 ## Usage
 

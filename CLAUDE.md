@@ -53,12 +53,16 @@ tests/PageBorder.test.tsx
 | `style`       | `CSSProperties`                        | no       |
 
 - Renders 4 fixed bars (top/right/bottom/left) and 4 corner mask divs.
+- Bars are sized only by their insets (`left/right: 0`, `top/bottom: 0`). Do not add `100dvw`/`100dvh`: viewport units include a classic scrollbar, insets on a fixed box do not.
+- No hooks, state or handlers, so no `"use client"` — it works as a Server Component. Add a tsup `banner` (and `treeshake: false`) only if that changes.
 - Exposes CSS variables: `--rpb-border-color`, `--rpb-border-size`, `--rpb-round-size`.
 - Each part exposes `data-part="bar-top" | "bar-bottom" | "bar-left" | "bar-right" | "corner-tl" | "corner-tr" | "corner-bl" | "corner-br"`.
 
 ## Publishing Notes
 
 - `files: ["dist", "README.md", "LICENSE"]`.
+- `exports` gives `import` → `index.d.ts`/`index.js` and `require` → `index.d.cts`/`index.cjs`. `pnpm check:package` (publint --strict + attw) runs in CI and `prepublishOnly`.
+- `engines.node` (`>=18`) is for consumers; the dev toolchain (pnpm 11) needs Node >= 22.13. CI packs on 24 and smoke-loads both entries on Node 18/20, and runs the tests on React 18 and latest.
 - v1.0.0 removes `@emotion/styled` and `style-object-to-css-string` dependencies. Default export becomes a named export `{ PageBorder }`.
 
 <!-- BEGIN:nextjs-agent-rules -->
